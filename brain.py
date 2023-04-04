@@ -195,20 +195,30 @@ def test():
     print("Running static tests..")
 
     # Test a Perceptron with binary classifier AND
+    print("Trying Perceptron with static AND..")
     p_1 = Perceptron(AND())
     assert p_1.process_input((0, 1)) == 0
     assert p_1.process_input((1, 0)) == 0
     assert p_1.process_input((0, 0)) == 0
     assert p_1.process_input((1, 1)) == 1
+    print("Success!")
 
+    print("Trying Perceptron with static OR..")
     p_2 = Perceptron(OR())
     assert p_2.process_input((0, 1)) == 1
     assert p_2.process_input((1, 0)) == 1
     assert p_2.process_input((0, 0)) == 0
     assert p_2.process_input((1, 1)) == 1
-
+    print("Success!")
+    
+    print("Trying Predictron with static MEDIAN..")
     p_median = Predictron(MEDIAN())
     assert p_median.process_input((1, 2, 3, 4, 5)) == 3
     assert p_median.process_input((1, 2, 4, 5)) == 3
     assert p_median.process_input((1, 11, 12, 13, 12345)) == 12 # an 'outlier'
     assert p_median.process_input((10, 11, 13, 14)) == 12
+    print("Success!")
+
+if __name__ == "__main__":
+    print("This module is ot meant to executed directly; will run tests instead..")
+    test()
